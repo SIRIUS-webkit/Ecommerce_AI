@@ -3,15 +3,20 @@ import { details } from "../components/data/details";
 import FeatureSlide from "./FeatureSlide";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import useWindowDimensions from "./hooks/useWindowDimensions";
 
 function Details() {
   gsap.registerPlugin(ScrollTrigger);
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
   const featuredLeftDetails = useRef(null);
   const featuredRightDetails = useRef(null);
+  const { width, height } = useWindowDimensions();
 
+  console.log(width, height);
   useEffect(() => {
-    smoothscroll("#main-container");
+    if (width > 560) {
+      smoothscroll("#main-container");
+    }
     function stopTrigger() {
       const tl = gsap.timeline({
         scrollTrigger: {
