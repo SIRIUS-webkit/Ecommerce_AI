@@ -156,6 +156,7 @@ function Details() {
               }
               key={index}
               style={{ backgroundImage: `url(${imageUrl})` }}
+              alt="image"
             />
           );
         })}

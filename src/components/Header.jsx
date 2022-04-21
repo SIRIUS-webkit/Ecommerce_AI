@@ -13,17 +13,17 @@ const Header = () => {
         <div className="flex items-center">
           <ul className="hidden justify-between space-x-5 md:flex">
             <li className="relative">
-              <a className="navBtn" href="#">
+              <a className="navBtn" href="#products">
                 Products
               </a>
             </li>
             <li className="relative">
-              <a className="navBtn" href="#">
+              <a className="navBtn" href="#stories">
                 Stories
               </a>
             </li>
             <li className="relative">
-              <a className="navBtn" href="#">
+              <a className="navBtn" href="#mission">
                 Mission
               </a>
             </li>
