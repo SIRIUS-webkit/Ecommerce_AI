@@ -8,7 +8,7 @@ function FeatureSlide({ title, content, index, updateActiveImage }) {
     if (OnScreen) {
       updateActiveImage(index);
     }
-  }, []); //OnScreen, index
+  }, [OnScreen, index]); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div
       ref={ref}
