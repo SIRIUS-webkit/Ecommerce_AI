@@ -125,7 +125,7 @@ function Details() {
         onRefresh: killScrub, // when the screen resizes, we just want the animation to immediately go to the appropriate spot rather than animating there, so basically kill the scrub.
       });
     }
-  }, []);
+  }, [width]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div
