@@ -10,7 +10,7 @@ function Details() {
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
   const featuredLeftDetails = useRef(null);
   const featuredRightDetails = useRef(null);
-  const { width, height } = useWindowDimensions();
+  const { width, height } = useWindowDimensions(); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (width > 560) {
