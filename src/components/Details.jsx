@@ -12,7 +12,6 @@ function Details() {
   const featuredRightDetails = useRef(null);
   const { width, height } = useWindowDimensions();
 
-  console.log(width, height);
   useEffect(() => {
     if (width > 560) {
       smoothscroll("#main-container");

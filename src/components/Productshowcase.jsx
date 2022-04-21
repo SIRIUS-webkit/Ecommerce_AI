@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/autoplay";
 
 import { productShowcase } from "../components/data/details";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/solid";
@@ -15,23 +16,23 @@ function Productshowcase() {
     <>
       <div className="relative mt-[8em] font-myfont max-w-[1450px] mx-9 lg:max-w-[1550px] lg:mx-20 h-full">
         <button
-          className="absolute w-10 top-[57%] -left-5 z-10 h-10 flex justify-center items-center bg-black rounded-full transition"
+          className="absolute w-10 top-[57%] -left-5 z-10 h-10 hidden md:flex justify-center items-center bg-black rounded-full transition"
           ref={prevBtn}
         >
           <ArrowLeftIcon className="h-5 w-5 text-white" />
         </button>
         <button
-          className="absolute w-10 top-[57%] -right-5 z-10 h-10 flex justify-center items-center bg-black rounded-full"
+          className="absolute w-10 top-[57%] -right-5 z-10 h-10 hidden md:flex justify-center items-center bg-black rounded-full"
           ref={nextBtn}
         >
           <ArrowRightIcon className="h-5 w-5 text-white" />
         </button>
 
         <div className="flex justify-between items-center">
-          <h1 className="text-[2.5rem] md:text-[3.5rem] leading-[62px]">
+          <h1 className="text-[2.5rem] md:text-[3.5rem] leading-[62px] font-semibold">
             Fetaured
           </h1>
-          <h4 className="relative text-base md:text-[19px] md:flex items-center hidden">
+          <h4 className="relative text-base md:text-[19px] md:flex items-center hidden font-semibold">
             <span className="relative transition ease-in-out cursor-pointer before:absolute before:h-[0.5px] before:bg-black before:w-0 before:left-0 before:-bottom-2 before:transition-all hover:before:w-full">
               Discover our products
             </span>{" "}
@@ -40,11 +41,12 @@ function Productshowcase() {
         </div>
         <div className="mt-[4em]">
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, Autoplay]}
             spaceBetween={50}
             slidesPerView={1}
             loop={true}
             speed={1000}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
             navigation={{
               prevEl: prevBtn.current,
               nextEl: nextBtn.current,
@@ -54,9 +56,7 @@ function Productshowcase() {
               swiper.params.navigation.nextEl = nextBtn.current;
             }}
             on={{
-              slideChangeTransitionStart: () => {
-                console.log("change");
-              },
+              slideChangeTransitionStart: () => {},
             }}
             breakpoints={{
               766: {
@@ -89,7 +89,7 @@ function Productshowcase() {
           </Swiper>
         </div>
         <div className="mt-[3em] md:hidden">
-          <h4 className="relative text-base md:text-[19px] flex items-center ">
+          <h4 className="relative text-base md:text-[19px] flex items-center font-semibold">
             <span className="relative transition ease-in-out cursor-pointer before:absolute before:h-[0.5px] before:bg-black before:w-0 before:left-0 before:-bottom-2 before:transition-all hover:before:w-full">
               Discover our products
             </span>{" "}

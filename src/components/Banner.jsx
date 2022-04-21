@@ -7,7 +7,7 @@ const Banner = () => {
     <div className="max-w-[1450px] mx-7 lg:max-w-[1550px] lg:mx-12 h-full ">
       <div className="mt-[50px] md:flex md:items-center md:mt-[80px] ">
         <div className="font-myfont w-full ">
-          <div className="leading-[50px] md:leading-[80px] lg:leading-[100px]">
+          <div className="leading-[50px] md:leading-[80px] lg:leading-[100px] font-bold">
             <h1 className="text-[3rem] text-left md:text-center md:text-[5rem] lg:text-[6rem] ">
               <span>Buy Everything</span>
             </h1>
