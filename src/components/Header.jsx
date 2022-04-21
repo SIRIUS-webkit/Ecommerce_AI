@@ -1,4 +1,3 @@
-import logo from "../assests/logo.png";
 import { MenuIcon, ShoppingCartIcon } from "@heroicons/react/outline";
 
 const Header = () => {

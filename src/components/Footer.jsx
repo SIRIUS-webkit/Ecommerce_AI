@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { ArrowLeftIcon, Facebook } from "@heroicons/react/solid";
 
 const Footer = () => {
   const [year, setYear] = useState("");
