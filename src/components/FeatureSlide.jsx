@@ -12,9 +12,9 @@ function FeatureSlide({ title, content, index, updateActiveImage }) {
   return (
     <div
       ref={ref}
-      className="h-[110vh] flex justify-center flex-col w-[70%] md:w-[60%] text-left m-auto  "
+      className="h-[100vh] flex justify-center flex-col w-[80%] md:w-[60%] text-left m-auto text-white md:text-black"
     >
-      <h1 className="text-[1.5rem] md:text-[3.5rem] lg:text-[4rem] uppercase font-bold font-lastfont">
+      <h1 className="text-[2rem] md:text-[3.5rem] lg:text-[4rem] uppercase font-bold font-lastfont">
         {title}
       </h1>
       <p className="text-[1rem] mt-7 font-secondaryfont">{content}</p>
