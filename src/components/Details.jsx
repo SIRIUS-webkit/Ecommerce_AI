@@ -21,7 +21,7 @@ function Details() {
         scrollTrigger: {
           trigger: featuredRightDetails.current,
           start: "top top",
-          end: () => `+=${featuredLeftDetails.current.offsetHeight}`,
+          end: () => "1500px", //`+=${featuredLeftDetails.current.offsetHeight}`
 
           scrub: true,
           pin: true,
@@ -130,9 +130,9 @@ function Details() {
     <div
       ref={featuredLeftDetails}
       id="featuredLeftId"
-      className="grid grid-cols-2 mt-[8.1rem] "
+      className="grid grid-cols-1 md:grid-cols-2 mt-[8.1rem]  "
     >
-      <div className="">
+      <div className="absolute z-10 md:relative">
         {details.map((detail, index) => {
           return (
             <FeatureSlide
