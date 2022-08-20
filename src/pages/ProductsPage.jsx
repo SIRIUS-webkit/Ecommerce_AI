@@ -11,6 +11,7 @@ import allProducts from "../data/all";
 function ProductsPage() {
   gsap.registerPlugin(ScrollTrigger);
   const { width } = useWindowDimensions(); // eslint-disable-line react-hooks/exhaustive-deps
+
   const [search, setSearch] = useState("");
   const [result, setResult] = useState([]);
   useEffect(() => {
@@ -109,7 +110,7 @@ function ProductsPage() {
         onRefresh: killScrub, // when the screen resizes, we just want the animation to immediately go to the appropriate spot rather than animating there, so basically kill the scrub.
       });
     }
-  }, [width]);
+  }, [width, search]);
 
   // search result
   const handleSearch = (input) => {

@@ -23,3 +23,6 @@
     @apply opacity-100 scale-[1.1];
   }
 }
+html {
+  scroll-behavior: smooth;
+}
