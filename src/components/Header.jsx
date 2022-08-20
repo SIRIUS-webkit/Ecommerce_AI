@@ -14,7 +14,7 @@ const Header = () => {
         <div className="flex items-center">
           <ul className="hidden justify-between space-x-5 md:flex">
             <li className="relative">
-              <a className="navBtn">
+              <a href="/" className="navBtn">
                 <Link to="/all"> Products</Link>
               </a>
             </li>
