@@ -1,4 +1,5 @@
 import { MenuIcon, ShoppingCartIcon } from "@heroicons/react/outline";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -13,8 +14,8 @@ const Header = () => {
         <div className="flex items-center">
           <ul className="hidden justify-between space-x-5 md:flex">
             <li className="relative">
-              <a className="navBtn" href="#products">
-                Products
+              <a href="/" className="navBtn">
+                <Link to="/all"> Products</Link>
               </a>
             </li>
             <li className="relative">
