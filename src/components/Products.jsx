@@ -2,14 +2,14 @@ import React from "react";
 // import all from "../data/all";
 function Products({ products, input }) {
   return (
-    <div className="my-[4rem] font-myfont">
+    <div className="w-full h-full my-[4rem] font-myfont">
       <div className="max-w-[1300px] md:mx-auto sm:mx-[1rem] mx-[1rem]">
         <div className="grid grid-cols-12 gap-[2em]">
           {products.map((data) => {
             return (
               <div className="md:col-span-3 sm:col-span-6 col-span-12 flex justify-center">
                 <div className="rounded-lg shadow-lg bg-white max-w-sm">
-                  <a href="#!">
+                  <a href="/">
                     <img
                       className="rounded-t-lg h-[200px] w-full object-cover"
                       src={data.url}
