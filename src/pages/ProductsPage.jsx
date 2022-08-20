@@ -151,15 +151,17 @@ function ProductsPage() {
     setResult([...all]);
   };
   return (
-    <div id="main-container">
-      <Header />
-      <SearchBar search={handleSearch} />
-      <Products
-        products={search?.length === 0 ? allProducts : result}
-        input={search}
-      />
-      <Footer />
-    </div>
+    <>
+      <div id="main-container">
+        <Header />
+        <SearchBar search={handleSearch} />
+        <Products
+          products={search?.length === 0 ? allProducts : result}
+          input={search}
+        />
+        <Footer />
+      </div>
+    </>
   );
 }
 
