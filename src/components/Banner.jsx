@@ -4,13 +4,13 @@ const Banner = () => {
       <div className="mt-[50px] md:grid grid-cols-12 gap-[3em] md:mt-[80px] ">
         <div className="col-span-12 font-featured w-full ">
           <div className="leading-[40px] sm:leading-[80px] md:leading-[90px] lg:leading-[130px] font-bold">
-            <h1 className="text-[30px] sm:text-[3rem] text-left  md:text-[4rem] lg:text-[6rem] ">
+            <h1 className="text-[35px] sm:text-[3rem] text-left  md:text-[4rem] lg:text-[6rem] ">
               <span>NEW ERA </span>
             </h1>
-            <h1 className="text-[30px] sm:text-[3rem] text-left  md:text-[4rem] lg:text-[6rem]">
+            <h1 className="text-[35px] sm:text-[3rem] text-left  md:text-[4rem] lg:text-[6rem]">
               <span>OF ECOMMERCE</span>
             </h1>
-            <h1 className="text-[30px] sm:text-[3rem] text-left  md:text-[4rem] lg:text-[6rem]">
+            <h1 className="text-[35px] sm:text-[3rem] text-left  md:text-[4rem] lg:text-[6rem]">
               <span>WITH MODERN AI TECH</span>
             </h1>
           </div>
