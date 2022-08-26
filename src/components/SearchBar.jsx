@@ -1,6 +1,8 @@
+/* eslint-disable */
 import React, { useState, useEffect, useRef } from "react";
 import "@tensorflow/tfjs-backend-webgl";
 import * as mobileNet from "@tensorflow-models/mobilenet";
+import ReactTooltip from "react-tooltip";
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -10,7 +12,7 @@ mic.continuous = true;
 mic.interimResults = true;
 mic.lang = "en-US";
 
-function SearchBar({ search }) {
+function SearchBar({ search, searchValue }) {
   const [input, setInput] = useState("");
   const [boxDisplay, setBoxDisplay] = useState(false);
   const [imageURL, setImageURL] = useState("");
@@ -30,6 +32,12 @@ function SearchBar({ search }) {
     };
     loadModal();
   }, []);
+
+  useEffect(() => {
+    if (!searchValue) {
+      setInput("");
+    }
+  }, [searchValue]);
 
   useEffect(() => {
     const handleListen = () => {
@@ -71,7 +79,7 @@ function SearchBar({ search }) {
       setInput(note);
       search(note);
     }
-  }, [note, search]);
+  }, [note]);
 
   // get inputdata
   const handleInput = (event) => {
@@ -110,20 +118,46 @@ function SearchBar({ search }) {
     } catch (error) {}
   };
 
+  const removeInput = () => {
+    setInput("");
+    search("");
+    return null;
+  };
+
   return (
     <div className="relative font-myfont">
       <div className="max-w-[1450px] mx-[10px] lg:max-w-[1550px] lg:mx-[5rem]  flex justify-center items-center">
         <div className="flex  space-x-[1rem]  p-6">
-          <div className="flex items-center space-x-2 ">
+          <div className="relative flex items-center space-x-2 ">
             <div>
               <input
                 type="text"
                 value={input}
                 onChange={handleInput}
-                className="max-w-[200px] md:min-w-[400px] sm:py-2 sm:px-3 py-1 px-2 outline-0  bg-transparent border-[2px] border-[#666666] rounded-md font-medium"
+                className="max-w-[200px] md:min-w-[400px] sm:py-2 sm:pl-3 pr-7 py-1 px-2 outline-0  bg-transparent border-[2px] border-[#666666] rounded-md font-medium"
                 placeholder="Search"
               />
             </div>
+            {input && (
+              <p
+                className="absolute right-[10px] cursor-pointer h-full overflow-hidden flex items-center justify-center"
+                role="presentation"
+                onClick={() => removeInput()}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-[#333333]"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </p>
+            )}
           </div>
           <input
             type="file"
@@ -133,11 +167,19 @@ function SearchBar({ search }) {
             onChange={uploadImage}
             hidden
           />
-          <div className="flex items-center space-x-2">
-            <label htmlFor="file" className="cursor-pointer">
+          <div className="flex items-center space-x-1 sm:space-x-3">
+            <ReactTooltip id="camera" place="bottom" effect="solid">
+              Search with image
+            </ReactTooltip>
+            <label
+              htmlFor="file"
+              className="cursor-pointer w-[30px] sm:w-[40px] sm:h-[40px] h-[30px] flex items-center justify-center bg-[#F7F3F2] rounded-full"
+              data-tip
+              data-for="camera"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-[#333333] hover:text-black"
+                className="h-4 w-4 sm:h-6 sm:w-6 text-[#333333] hover:text-black"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -148,15 +190,21 @@ function SearchBar({ search }) {
                 />
               </svg>
             </label>
+
             <div
               role="presentation"
               onClick={() => setIsListening((prevState) => !prevState)}
-              className="cursor-pointer"
+              className="cursor-pointer w-[30px] sm:w-[40px] h-[30px] sm:h-[40px] flex items-center justify-center bg-[#F7F3F2] rounded-full"
+              data-tip
+              data-for="voice"
             >
+              <ReactTooltip id="voice" place="bottom" effect="solid">
+                Search with voice
+              </ReactTooltip>
               {isListening ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="h-4 w-4 sm:h-6 sm:w-6"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -169,10 +217,8 @@ function SearchBar({ search }) {
               ) : (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="21"
-                  height="21"
                   fill="currentColor"
-                  class="bi bi-mic-mute-fill"
+                  className="bi bi-mic-mute-fill h-4 w-4 sm:h-5 sm:w-5"
                   viewBox="0 0 16 16"
                 >
                   <path d="M13 8c0 .564-.094 1.107-.266 1.613l-.814-.814A4.02 4.02 0 0 0 12 8V7a.5.5 0 0 1 1 0v1zm-5 4c.818 0 1.578-.245 2.212-.667l.718.719a4.973 4.973 0 0 1-2.43.923V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 1 0v1a4 4 0 0 0 4 4zm3-9v4.879L5.158 2.037A3.001 3.001 0 0 1 11 3z" />
@@ -184,12 +230,12 @@ function SearchBar({ search }) {
         </div>
       </div>
       {boxDisplay && (
-        <>
+        <div className="">
           <div className="sm:max-w-full max-w-[320px] mx-auto flex justify-center items-center relative">
             <div
               className={`absolute ${
                 results.length === 0 ? "mt-[20rem]" : "mt-[26rem]"
-              }  w-full max-w-[450px] border-[1px] rounded-md px-[2rem] py-[1rem] bg-gray-100`}
+              }  w-full max-w-[450px] border-[1px] rounded-md px-[2rem] py-[1rem] bg-white border-[#666666]`}
             >
               <div
                 className="flex justify-end cursor-pointer hover:text-blue-300"
@@ -260,7 +306,7 @@ function SearchBar({ search }) {
               )}
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

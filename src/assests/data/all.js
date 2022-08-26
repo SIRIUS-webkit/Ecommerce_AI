@@ -5,13 +5,8 @@ const all = [
     name: "Coach Tyler",
     fullName: "Coach Tyler Carry All 28",
     url: "https://s7d2.scene7.com/is/image/Coach/c3460_b4bk_a0?$pd_main$",
-    description: [
-      "Minimal design, maximum versability",
-      "Leather Hangtag and the signature charm for an iconic touch",
-      "Depth (cm): 6.5",
-      "Width (cm): 12",
-      "Height (cm): 14",
-    ],
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     producedBy: "Coach Official Store",
     brand: "Coach",
     year: 2021,

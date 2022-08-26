@@ -1,11 +1,12 @@
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 
-import { productShowcase } from "../components/data/details";
+import { productShowcase } from "../assests/data/details";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/solid";
 
 function Productshowcase() {
@@ -34,7 +35,7 @@ function Productshowcase() {
           </h1>
           <h4 className="relative text-base md:text-[19px] md:flex items-center hidden font-semibold">
             <span className="relative transition ease-in-out cursor-pointer before:absolute before:h-[0.5px] before:bg-black before:w-0 before:left-0 before:-bottom-2 before:transition-all hover:before:w-full">
-              Discover our products
+              <Link to="/all"> Discover our products</Link>
             </span>{" "}
             <ArrowRightIcon className="h-5 w-5 ml-[20px]" />
           </h4>
@@ -91,7 +92,7 @@ function Productshowcase() {
         <div className="mt-[3em] md:hidden">
           <h4 className="relative text-base md:text-[19px] flex items-center font-semibold">
             <span className="relative transition ease-in-out cursor-pointer before:absolute before:h-[0.5px] before:bg-black before:w-0 before:left-0 before:-bottom-2 before:transition-all hover:before:w-full">
-              Discover our products
+              <Link to="/all"> Discover our products</Link>
             </span>{" "}
             <ArrowRightIcon className="h-5 w-5 ml-[20px]" />
           </h4>
