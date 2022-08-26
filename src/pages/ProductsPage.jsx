@@ -6,7 +6,7 @@ import SearchBar from "../components/SearchBar";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import useWindowDimensions from "../components/hooks/useWindowDimensions";
-import allProducts from "../data/all";
+import allProducts from "../assests/data/all";
 
 function ProductsPage() {
   gsap.registerPlugin(ScrollTrigger);
@@ -14,6 +14,7 @@ function ProductsPage() {
 
   const [search, setSearch] = useState("");
   const [result, setResult] = useState([]);
+  const [itemCount, setItemCount] = useState(0);
   useEffect(() => {
     if (width > 560) {
       smoothscroll("#main-container");
@@ -154,11 +155,13 @@ function ProductsPage() {
   return (
     <>
       <div id="main-container">
-        <Header />
-        <SearchBar search={handleSearch} />
+        <Header itemCount={itemCount} />
+        <SearchBar search={handleSearch} searchValue={search} />
         <Products
           products={search?.length === 0 ? allProducts : result}
           input={search}
+          setItemCount={setItemCount}
+          search={handleSearch}
         />
         <Footer />
       </div>

@@ -8,7 +8,7 @@ import Productshowcase from "../components/Productshowcase";
 function Home() {
   return (
     <>
-      <div id="main-container">
+      <div id="main-container" asscroll-container>
         <Header />
         <Banner />
         <Details />
