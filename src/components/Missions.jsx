@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Products from "../components/Products";
-import SearchBar from "../components/SearchBar";
-import { gsap } from "gsap";
+import React, { useEffect } from "react";
+import Header from "./Header";
+import Footer from "./Footer";
+import { gsap, Power4 } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import useWindowDimensions from "../components/hooks/useWindowDimensions";
-import allProducts from "../assests/data/all";
 
-function ProductsPage() {
+function Missions() {
   gsap.registerPlugin(ScrollTrigger);
   const { width } = useWindowDimensions(); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const [search, setSearch] = useState("");
-  const [result, setResult] = useState([]);
-  const [itemCount, setItemCount] = useState(0);
   useEffect(() => {
     if (width > 560) {
       smoothscroll("#main-container");
@@ -111,62 +105,53 @@ function ProductsPage() {
         onRefresh: killScrub, // when the screen resizes, we just want the animation to immediately go to the appropriate spot rather than animating there, so basically kill the scrub.
       });
     }
-  }, [width, search]);
+  }, [width]);
 
-  // search result
-  const handleSearch = (input) => {
-    input = input.toLowerCase().trim();
-    setSearch(input);
-    const arr = input.split(" ");
-    let all = [];
-    var exact = allProducts?.filter((found) => {
-      var temp =
-        found.fullName + " " + found.id + " " + found.brand + " " + found.color;
-      temp = temp.toLowerCase();
-      return (
-        arr.every((item) => temp.includes(item)) ||
-        found.url.toLowerCase().includes(input.replace("http", ""))
-      );
-    });
-    all.push(...exact);
+  useEffect(() => {
+    const tl = gsap.timeline();
+    tl.staggerFrom(".hidetext", 1.5, { y: 200, ease: Power4.easeOut }, 0.35);
+  }, []);
 
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].length < 2 || arr[i] === "I" || arr[i] === "to") {
-        // all = [];
-        continue;
-      }
-
-      var similar = allProducts?.filter((found) => {
-        return (
-          found.fullName.toLowerCase().includes(arr[i]) ||
-          found.color.toLowerCase().includes(arr[i]) ||
-          found.id.toLowerCase().includes(arr[i]) ||
-          found.brand.toLowerCase().includes(arr[i]) ||
-          found.url.toLowerCase().includes(input.replace("http", ""))
-        );
-      });
-      all.push(...similar);
-    }
-
-    all = [...new Set(all)];
-    // shuffle(all);
-    setResult([...all]);
-  };
   return (
-    <>
-      <div id="main-container">
-        <Header itemCount={itemCount} />
-        <SearchBar search={handleSearch} searchValue={search} />
-        <Products
-          products={search?.length === 0 ? allProducts : result}
-          input={search}
-          setItemCount={setItemCount}
-          search={handleSearch}
-        />
-        <Footer />
+    <div id="main-container">
+      <Header />
+      <div className="max-w-[1300px] 2xl:mx-auto md:mx-[3rem] mx-[1.5rem] py-[5rem]">
+        <div className="md:my-[5rem] mb-[4rem] uppercase w-full">
+          <h1 className="font-bold lg:text-[6rem] md:text-[5rem] text-[35px] font-headerFont  relative overflow-hidden w-full lg:h-[140px] md:h-[100px] h-[50px]">
+            <span className="absolute z-[200] hidetext">A Run</span>
+          </h1>
+          <h1 className="font-bold lg:text-[6rem] md:text-[5rem] text-[35px] font-headerFont relative overflow-hidden w-full lg:h-[200px] md:h-[250px] h-[100px] ">
+            <span className="absolute z-[200] hidetext">Can Last Forever.</span>
+          </h1>
+        </div>
+        <div>
+          <img
+            src="https://cdn.shopify.com/s/files/1/0564/0830/9941/files/moe7857_1920x.jpg?v=1647640079"
+            alt="img"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="grid grid-cols-12 mt-[5rem] md:gap-[3rem]">
+          <div className="md:col-span-4 md:block hidden">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0564/0830/9941/files/NR-SS22_RZ-W-1452_480x.jpg?v=1647618893"
+              alt="sub"
+              className="w-full  h-[300px] object-cover"
+            />
+          </div>
+          <div className="md:col-span-8 col-span-12">
+            <p className="md:text-[2rem] text-[1rem] font-myfont font-bold">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos
+              natus voluptates veritatis accusamus nam officia, vero veniam!
+              Sint veritatis, odio, saepe voluptate, est quas incidunt amet
+              veniam eius quo inventore.
+            </p>
+          </div>
+        </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 
-export default ProductsPage;
+export default Missions;

@@ -1,35 +1,30 @@
-import Button from "./Button";
-import bannerImage from "../assests/hero-banner.png";
-
+import React, { useEffect } from "react";
+import { gsap, Power4 } from "gsap";
 const Banner = () => {
-  const shopnow = "Shop Now";
-  const sellnow = "Sell Now";
+  useEffect(() => {
+    const tl = gsap.timeline();
+
+    tl.staggerFrom(".hidetext", 1.5, { y: 200, ease: Power4.easeOut }, 0.35);
+  }, []);
+
   return (
-    <div className="max-w-[1450px] mx-7 lg:max-w-[1550px] lg:mx-[9em] h-full ">
-      <div className="mt-[50px] md:grid grid-cols-12 gap-[3em] md:mt-[80px] ">
-        <div className="col-span-6 font-myfont w-full ">
-          <div className="leading-[50px] md:leading-[80px] lg:leading-[100px] font-bold">
-            <h1 className="text-[3rem] text-left  md:text-[5rem] lg:text-[6rem] ">
-              <span>New Era of</span>
-            </h1>
-            <h1 className="text-[3rem] text-left  md:text-[5rem] lg:text-[6rem]">
-              <span>eCommerce</span>
-            </h1>
-          </div>
-          <p className="text-left text-[15px] mt-10 max-w-[900px] mx-auto  font-secondaryfont font-[400]">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum
-            similique et obcaecati delectus deserunt architecto omnis natus
-            molestiae iure id iste in ut quam consequuntur, vero ratione rerum
-            exercitationem odio.
-          </p>
-          <div className="flex space-x-5 mt-10 items-center justify-center float-left ">
-            <Button target="primary" title={shopnow} />
-            <Button target="secondary" title={sellnow} />
-          </div>
-        </div>
-        <div className="col-span-6">
-          <div className="w-full h-full">
-            <img src={bannerImage} alt="banner" className="w-full h-full" />
+    <div className="mb-[-3rem] md:mb-0">
+      <div className="max-w-[1450px] mx-7 lg:max-w-[1550px] lg:mx-[9em] h-full">
+        <div className="mt-[50px] md:grid grid-cols-12 gap-[3em] md:mt-[80px] ">
+          <div className="col-span-12 font-headerFont w-full ">
+            <div className="leading-[40px] sm:leading-[80px] md:leading-[90px] lg:leading-[130px] font-bold">
+              <h1 className="relative overflow-hidden w-full h-[50px] sm:h-[80px] md:h-[130px] lg:h-[150px] text-[35px] sm:text-[3rem] text-left  md:text-[4rem] lg:text-[5rem] 2xl:text-[8rem] ">
+                <span className="absolute z-[200] hidetext">NEW ERA </span>
+              </h1>
+              <h1 className="relative overflow-hidden  w-full h-[50px] sm:h-[80px] md:h-[130px] lg:h-[150px] text-[35px] sm:text-[3rem] text-left  md:text-[4rem] lg:text-[5rem] 2xl:text-[8rem]">
+                <span className="absolute z-[200] hidetext">OF ECOMMERCE</span>
+              </h1>
+              <h1 className="relative overflow-hidden  w-full h-[80px] sm:h-[80px] md:h-[130px] lg:h-[250px] 2xl:h-[120px] text-[35px] sm:text-[3rem] text-left  md:text-[4rem] lg:text-[5rem] 2xl:text-[8rem]">
+                <span className="absolute z-[200] hidetext">
+                  WITH MODERN AI
+                </span>
+              </h1>
+            </div>
           </div>
         </div>
       </div>

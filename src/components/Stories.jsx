@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Products from "../components/Products";
-import SearchBar from "../components/SearchBar";
-import { gsap } from "gsap";
+import React, { useEffect } from "react";
+import Header from "./Header";
+import Footer from "./Footer";
+import { gsap, Power4 } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import useWindowDimensions from "../components/hooks/useWindowDimensions";
-import allProducts from "../assests/data/all";
+import { StoriesData } from "../assests/data/details";
 
-function ProductsPage() {
+function Stories() {
   gsap.registerPlugin(ScrollTrigger);
   const { width } = useWindowDimensions(); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const [search, setSearch] = useState("");
-  const [result, setResult] = useState([]);
-  const [itemCount, setItemCount] = useState(0);
   useEffect(() => {
     if (width > 560) {
       smoothscroll("#main-container");
@@ -111,62 +106,66 @@ function ProductsPage() {
         onRefresh: killScrub, // when the screen resizes, we just want the animation to immediately go to the appropriate spot rather than animating there, so basically kill the scrub.
       });
     }
-  }, [width, search]);
+  }, [width]);
 
-  // search result
-  const handleSearch = (input) => {
-    input = input.toLowerCase().trim();
-    setSearch(input);
-    const arr = input.split(" ");
-    let all = [];
-    var exact = allProducts?.filter((found) => {
-      var temp =
-        found.fullName + " " + found.id + " " + found.brand + " " + found.color;
-      temp = temp.toLowerCase();
-      return (
-        arr.every((item) => temp.includes(item)) ||
-        found.url.toLowerCase().includes(input.replace("http", ""))
-      );
-    });
-    all.push(...exact);
+  useEffect(() => {
+    const tl = gsap.timeline();
+    tl.staggerFrom(".hidetext", 1.5, { y: 200, ease: Power4.easeOut }, 0.35);
+  }, []);
 
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].length < 2 || arr[i] === "I" || arr[i] === "to") {
-        // all = [];
-        continue;
-      }
-
-      var similar = allProducts?.filter((found) => {
-        return (
-          found.fullName.toLowerCase().includes(arr[i]) ||
-          found.color.toLowerCase().includes(arr[i]) ||
-          found.id.toLowerCase().includes(arr[i]) ||
-          found.brand.toLowerCase().includes(arr[i]) ||
-          found.url.toLowerCase().includes(input.replace("http", ""))
-        );
-      });
-      all.push(...similar);
-    }
-
-    all = [...new Set(all)];
-    // shuffle(all);
-    setResult([...all]);
-  };
   return (
-    <>
-      <div id="main-container">
-        <Header itemCount={itemCount} />
-        <SearchBar search={handleSearch} searchValue={search} />
-        <Products
-          products={search?.length === 0 ? allProducts : result}
-          input={search}
-          setItemCount={setItemCount}
-          search={handleSearch}
-        />
-        <Footer />
+    <div id="main-container">
+      <Header />
+      <div className="max-w-[1300px] 2xl:mx-auto md:mx-[3rem] mx-[1.5rem] py-[5rem]">
+        <div className="md:my-[8rem] mb-[4rem]">
+          <h1 className="font-bold lg:text-[6rem] md:text-[5rem] text-[35px] font-headerFont  relative overflow-hidden w-full md:h-[200px] h-[60px]">
+            <span className="absolute z-[200] hidetext"> STORIES</span>
+          </h1>
+        </div>
+        <div className="grid grid-cols-12 lg:gap-[5rem] gap-[1rem] font-myfont">
+          {StoriesData.map((data) => (
+            <div
+              className="relative md:col-span-6 col-span-12 w-full h-full overflow-hidden"
+              key={data.id}
+            >
+              <img
+                src={data.imageUrl}
+                alt="stories"
+                className="w-full lg:h-[650px] md:h-[530px] h-[350px] object-cover hover:scale-[1.2] ease duration-500 transition-all cursor-pointer"
+              />
+              <p className="absolute text-white top-[1rem] left-[1rem] text-[1rem] uppercase">
+                {data.title}
+              </p>
+              <p className="absolute text-white top-[1rem] right-[1rem] text-[1rem] uppercase">
+                {data.date}
+              </p>
+              <p className="absolute text-white bottom-[1rem] left-[1rem] text-[1rem]">
+                {data.footerTitle}
+              </p>
+            </div>
+          ))}
+
+          {/* <div className="relative col-span-6 w-full h-[60%] overflow-hidden">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0564/0830/9941/articles/image0_1_cf413d18-9be6-4b04-ad09-22871ec760d6_1000x1000.jpg?v=1636113235"
+              alt=""
+              className="w-full h-full object-cover hover:scale-[1.2] ease duration-500 transition-all cursor-pointer"
+            />
+            <p className="absolute text-white top-[1rem] left-[1rem] text-[1rem]">
+              STORY
+            </p>
+            <p className="absolute text-white top-[1rem] right-[1rem] text-[1rem]">
+              AUG 2019
+            </p>
+            <p className="absolute text-white bottom-[1rem] left-[1rem] text-[1rem]">
+              Best Seller Ecommerece
+            </p>
+          </div> */}
+        </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 
-export default ProductsPage;
+export default Stories;

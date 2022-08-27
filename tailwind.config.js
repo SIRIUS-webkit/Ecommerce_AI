@@ -9,6 +9,7 @@ module.exports = {
     },
     fontFamily: {
       myfont: ["Arimo", "sans-serif"],
+      headerFont: ["Helvetica Neue", "sans-serif"],
       featured: ["Bodoni Moda", "sans-serif"],
       secondaryfont: ["Poppins", "sans-serif"],
       lastfont: ["Fugaz One", "cursive"], // Ensure fonts with spaces have " " surrounding it.
@@ -17,7 +18,7 @@ module.exports = {
       sm: "640px",
       // => @media (min-width: 640px) { ... }
 
-      md: "788px",
+      md: "768px",
       // => @media (min-width: 768px) { ... }
 
       lg: "1024px",

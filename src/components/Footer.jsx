@@ -7,31 +7,30 @@ const Footer = () => {
   }, []);
   return (
     <>
-      <div className="w-full py-9 px-[48px] md:px-[70px]  bg-black font-myfont text-white">
-        <h3 className=" uppercase font-[23px] leading-3 tracking-wide">
+      <div className="w-full py-9 px-[30px] md:px-[70px]  bg-black font-myfont text-white">
+        <h3 className=" uppercase font-[10px] leading-3 tracking-wide">
           Join Our Community
         </h3>
         <div className="grid grid-cols-1  mt-[4em] md:grid-cols-2 md:gap-7 ">
           <div className=" flex flex-col">
             <input
-              className="w-full py-3 px-4 outline-0  bg-transparent border-[2px] border-white rounded-sm font-medium"
+              className="w-full md:py-3 py-2 md:px-4 px-3 outline-0  bg-transparent border-[2px] border-white rounded-sm font-medium"
               type="text"
               placeholder="Your Email"
             />
             <br />
-            <button className="w-full bg-white text-black py-3 rounded-sm uppercase text-[16px] tracking-wide">
+            <button className="w-full bg-white text-black md:py-3 py-2 rounded-sm uppercase text-[16px] tracking-wide">
               Subscribe
             </button>
           </div>
           <div className="mt-8  md:justify-center md:items-start">
-            <h3 className="uppercase md:-mt-10 md:text-[14px] md:text-center">
+            <h3 className="uppercase md:-mt-10 md:text-[14px] text-[13px] md:text-center">
               Our Social Media
             </h3>
             <div className="flex md:justify-center md:items-center mt-[3em]">
               <span className="px-2 cursor-pointer">
                 <svg
-                  width="30"
-                  height="30"
+                  className="md:w-8 md:h-8 w-5 h-5"
                   viewBox="0 0 40 40"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -44,8 +43,7 @@ const Footer = () => {
               </span>
               <span className="px-2 cursor-pointer">
                 <svg
-                  width="30"
-                  height="30"
+                  className="md:w-8 md:h-8 w-5 h-5"
                   viewBox="0 0 40 40"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -58,8 +56,7 @@ const Footer = () => {
               </span>
               <span className="px-2 cursor-pointer">
                 <svg
-                  width="30"
-                  height="30"
+                  className="md:w-8 md:h-8 w-5 h-5"
                   viewBox="0 0 40 41"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
