@@ -4,7 +4,9 @@ import Home from "./pages/Home";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetails from "./components/ProductDetails";
 import Order from "./components/Order";
+import Stories from "./components/Stories";
 import ScrollToTop from "./components/hooks/ScrollToTop";
+import Missions from "./components/Missions";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="all/:id" element={<ProductDetails />} />
           <Route path="all" element={<ProductsPage />} />
           <Route path="order" element={<Order />} />
+          <Route path="stories" element={<Stories />} />
+          <Route path="missions" element={<Missions />} />
         </Routes>
       </BrowserRouter>
     </div>
