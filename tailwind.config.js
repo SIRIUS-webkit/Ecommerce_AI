@@ -9,6 +9,7 @@ module.exports = {
     },
     fontFamily: {
       myfont: ["Arimo", "sans-serif"],
+      headerFont: ["Helvetica Neue", "sans-serif"],
       featured: ["Bodoni Moda", "sans-serif"],
       secondaryfont: ["Poppins", "sans-serif"],
       lastfont: ["Fugaz One", "cursive"], // Ensure fonts with spaces have " " surrounding it.

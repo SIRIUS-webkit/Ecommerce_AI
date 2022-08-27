@@ -12,6 +12,10 @@ const Header = ({ itemCount }) => {
   useEffect(() => {
     if (location.pathname === "/all") {
       setIsActive(1);
+    } else if (location.pathname === "/stories") {
+      setIsActive(2);
+    } else if (location.pathname === "/missions") {
+      setIsActive(3);
     }
   }, [location]);
 
@@ -41,13 +45,19 @@ const Header = ({ itemCount }) => {
                 </a>
               </li>
               <li className="relative">
-                <a className="navBtn" href="#stories">
-                  Stories
+                <a
+                  className={`navBtn ${isActive === 2 ? "font-bold" : ""} `}
+                  href="/"
+                >
+                  <Link to="/stories">Stories</Link>
                 </a>
               </li>
               <li className="relative">
-                <a className="navBtn" href="#mission">
-                  Mission
+                <a
+                  className={`navBtn ${isActive === 3 ? "font-bold" : ""} `}
+                  href="/"
+                >
+                  <Link to="/missions">Mission</Link>
                 </a>
               </li>
               <div
@@ -76,7 +86,6 @@ const Header = ({ itemCount }) => {
             </ul>
           </div>
           <div className="flex items-center space-x-4">
-            <p className="hidden md:block">Login</p>
             <div className="relative cursor-pointer">
               <Link to="/order">
                 <ShoppingCartIcon className="h-5 w-5" />

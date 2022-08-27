@@ -235,30 +235,34 @@ function SearchBar({ search, searchValue }) {
             <div
               className={`absolute ${
                 results.length === 0 ? "mt-[20rem]" : "mt-[26rem]"
-              }  w-full max-w-[450px] border-[1px] rounded-md px-[2rem] py-[1rem] bg-white border-[#666666]`}
+              }  w-full max-w-[450px] border-[1px] rounded-md px-[2rem] py-[1rem] bg-[#eeeeee] `}
             >
-              <div
-                className="flex justify-end cursor-pointer hover:text-blue-300"
-                role="presentation"
-                onClick={() => {
-                  setBoxDisplay(false);
-                  // setImageInput(false);
-                  setImageURL(null);
-                  setResults([]);
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
+              <div className="flex justify-between mb-[20px] ">
+                <h1 className="text-[1rem] font-semibold">
+                  Image Search With AI
+                </h1>
+                <div
+                  role="presentation"
+                  onClick={() => {
+                    setBoxDisplay(false);
+                    // setImageInput(false);
+                    setImageURL(null);
+                    setResults([]);
+                  }}
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
               </div>
               <div className="max-w-[200px]  mx-auto">
                 {isImage && (
@@ -275,7 +279,7 @@ function SearchBar({ search, searchValue }) {
                   <button
                     type="button"
                     onClick={Identify}
-                    className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                    className="px-6 py-2.5 bg-[#666666] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#333333] hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out"
                   >
                     Identify Image
                   </button>
@@ -290,7 +294,7 @@ function SearchBar({ search, searchValue }) {
                           search(res.className.replaceAll(",", ""));
                           setInput(res.className.replaceAll(",", ""));
                         }}
-                        className="flex justify-between items-center mb-1 cursor-pointer hover:bg-red-200 px-[1rem] py-[0.5rem] rounded-md"
+                        className="flex justify-between items-center mb-1 cursor-pointer hover:bg-[#666666] hover:text-white px-[1rem] py-[0.5rem] rounded-md"
                       >
                         <p>{res.className}</p>
                         <p>
