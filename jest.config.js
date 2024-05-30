@@ -16,12 +16,12 @@ module.exports = {
     "\\.(css|less)$": "<rootDir>/src/__mocks__/styleMock.js",
   },
   collectCoverage: true,
-  coverageReporters: ["lcov", "text", "html"],
-  collectCoverageFrom: [
-    "src/**/*.{js,jsx}",
-    "!src/**/*.test.{js,jsx}",
-    "!src/index.js",
-    "!src/reportWebVitals.js",
-  ],
+  coverageReporters: ["lcov", "text"],
+  // collectCoverageFrom: [
+  //   "src/**/*.{js,jsx}",
+  //   "!src/**/*.test.{js,jsx}",
+  //   "!src/index.js",
+  //   "!src/reportWebVitals.js",
+  // ],
   coverageDirectory: "coverage",
 };
