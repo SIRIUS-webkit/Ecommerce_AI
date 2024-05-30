@@ -20,9 +20,18 @@ jobs:
       - name: Test and coverage
         run: |
           yarn jest --coverage
-          # Move the lcov report to the expected location
-          mkdir -p coverage
-          mv coverage/lcov-report/lcov.info coverage/lcov.info
+          # Verify the location of the lcov.info file
+          ls -R coverage
+          # Move the lcov.info file if it exists
+          if [ -f coverage/lcov.info ]; then
+            echo "lcov.info found in coverage directory"
+          elif [ -f coverage/lcov-report/lcov.info ]; then
+            mkdir -p coverage
+            mv coverage/lcov-report/lcov.info coverage/lcov.info
+          else
+            echo "lcov.info not found"
+            exit 1
+          fi
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
