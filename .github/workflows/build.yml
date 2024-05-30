@@ -40,7 +40,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=${{ github.repository }}
+            -Dsonar.projectKey=SIRIUS-webkit_Ecommerce_AI
             -Dsonar.organization=sirius-webkit
             -Dsonar.projectName=${{ github.repository }}
             -Dsonar.projectVersion=${{ github.run_id }}
