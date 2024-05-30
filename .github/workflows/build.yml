@@ -40,4 +40,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
+            -Dsonar.projectKey=${{ github.repository }}
+            -Dsonar.organization=sirius-webkit
+            -Dsonar.projectName=${{ github.repository }}
+            -Dsonar.projectVersion=${{ github.run_id }}
+            -Dsonar.branch.name=${{ github.ref_name }}
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
