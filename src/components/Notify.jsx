@@ -2,12 +2,17 @@ import React, { useEffect } from "react";
 
 function Notify({ notify, setNotify }) {
   useEffect(() => {
-    setTimeout(() => {
-      setNotify(false);
-    }, 1000);
+    if (notify) {
+      const timer = setTimeout(() => {
+        setNotify(false);
+      }, 1000);
+      return () => clearTimeout(timer); // Clean up the timer
+    }
   }, [notify, setNotify]);
+
   return (
     <div
+      data-testid="notification"
       className={`absolute top-7 right-0 z-[100] ${
         notify ? "block" : "hidden"
       }`}
