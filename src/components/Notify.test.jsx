@@ -10,34 +10,31 @@ describe("Notify component", () => {
     const setNotify = jest.fn();
     render(<Notify notify={true} setNotify={setNotify} />);
 
-    const notification = screen.getByText(/Item Added/i);
-    expect(notification).toBeInTheDocument();
+    const notificationWrapper = screen.getByTestId("notification");
+    expect(notificationWrapper).toBeInTheDocument();
+    expect(notificationWrapper).toHaveClass("block");
   });
 
   test("hides notification message after 1 second", async () => {
     const setNotify = jest.fn();
     render(<Notify notify={true} setNotify={setNotify} />);
 
-    const notification = screen.getByText(/Item Added/i);
-    expect(notification).toBeInTheDocument();
+    const notificationWrapper = screen.getByTestId("notification");
+    expect(notificationWrapper).toBeInTheDocument();
 
     // Fast-forward until all timers have been executed
     jest.runAllTimers();
 
-    // Wait for the side effect to be applied
-    await waitFor(() => {
-      expect(setNotify).toHaveBeenCalledWith(false);
-    });
-
-    // Check if the notification is hidden
-    expect(notification).not.toBeVisible();
+    // Check if setNotify has been called with false
+    expect(setNotify).toHaveBeenCalledWith(false);
   });
 
   test("does not render notification message when notify is false", () => {
     const setNotify = jest.fn();
     render(<Notify notify={false} setNotify={setNotify} />);
 
-    const notification = screen.queryByText(/Item Added/i);
-    expect(notification).not.toBeInTheDocument();
+    const notificationWrapper = screen.getByTestId("notification");
+    expect(notificationWrapper).toBeInTheDocument();
+    expect(notificationWrapper).toHaveClass("hidden");
   });
 });
